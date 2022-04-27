@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Jeu Pacman</title>
+
+    <script type="text/javascript">
+        function draw() {
+          var canvas = document.getElementById('cadreglobal');
+          if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+          }
+        }
+      </script>
+      <style type="text/css">
+        canvas { border: 1px solid white; }
+      </style>
+
+<script type="text/javascript">
+      function dessiner() {
+  var canevas = document.getElementById('pacman');
+  if (canevas.getContext){
+    var ctx = canevas.getContext('2d');
+
+    var cercle = new Path2D();
+    cercle.moveTo(125, 35);
+    cercle.arc(100, 35, 25, 0, 2 * Math.PI);
+
+    ctx.fill(cercle);
+  }
+}
+</script>
+</head>
+
+<body onload="draw();">
+    <canvas id="cadreglobal" width="800" height="450"></canvas>
+
+    <div id="pac"><img src='images\pacman.png' width="50" height="50"></div>
+   
+  </body>
+
+  
+<script type="text/javascript">
+    var pac = document.getElementById('pac'),
+        s = pac.style, 
+        i = pac.offsetLeft, 
+        j = pac.offsetTop;
+    document.onkeydown = function(event){
+        var event = event || window.event,
+            keyCode = event.keyCode;
+         
+  
+        switch(keyCode){
+        case 38:
+            j--;
+            break;
+        case 40:
+            j++;
+            break;
+        case 37:
+            i--;
+            break;
+        case 39:
+            i++;
+            break;
+        }
+       
+        s.left = String(i)+'px';
+        s.top = String(j)+'px';
+    }
+  
+  </script>
+  
+
+
+</html>
